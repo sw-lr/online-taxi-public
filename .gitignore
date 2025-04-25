@@ -1,0 +1,16 @@
+# Default ignored files
+/.idea/shelf/
+/.idea/workspace.xml
+# Editor-based HTTP Client requests
+/.idea/httpRequests/
+# Datasource local storage ignored files
+/.idea/dataSources/
+/.idea/dataSources.local.xml
+
+/.idea/tasks.xml
+/.idea/uiDesigner.xml
+/.idea/jarRepositories.xml
+/.idea/dbnavigator.xml
+
+# 新增忽略规则：api-passenger/target 目录
+api-passenger/target/
