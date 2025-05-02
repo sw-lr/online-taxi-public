@@ -1,6 +1,8 @@
 package com.example.internalcommon.dto;
 
 import com.example.internalcommon.core.StatusCode;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -81,11 +83,34 @@ public class ResponseResult<T> implements Serializable {
         return new ResponseResult<>(errorStatus, data);
     }
 
+    /**
+     * 业务构造器
+     * @param status
+     * @param data
+     * @param messageArgs
+     */
     private ResponseResult(StatusCode status, T data, Object... messageArgs) {
         this.code = status.getCode();
         this.message = messageArgs.length > 0 ?
                 status.formatMessage(messageArgs) : // 有参数时格式化
                 status.getMessage(); // 无参数时直接使用原始消息
+        this.data = data;
+    }
+
+    /**
+     * Jackson 反序列化专用构造器
+     * @param code
+     * @param message
+     * @param data
+     */
+    @JsonCreator
+    public ResponseResult(
+            @JsonProperty("code") int code,
+            @JsonProperty("message") String message,
+            @JsonProperty("data") T data
+    ){
+        this.code = code;
+        this.message = message;
         this.data = data;
     }
 

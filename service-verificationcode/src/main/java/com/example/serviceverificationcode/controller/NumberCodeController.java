@@ -38,6 +38,8 @@ public class NumberCodeController {
         NumberCodeResponse response = new NumberCodeResponse();
         response.setNumberCode(numberCode.toString());
 
+        System.out.println("验证码为：" + numberCode.toString());
+
         return ResponseResult.success(VerificationcodeStatusEnum.CODE_GENERATED, response);
     }
 }
