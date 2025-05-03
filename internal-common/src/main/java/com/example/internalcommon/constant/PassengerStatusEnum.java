@@ -11,10 +11,15 @@ import com.example.internalcommon.core.StatusCode;
  * @Create 2025/4/26 20:29
  * @Version 1.0
  */
-public class PassengerStatusEnum implements StatusCode {
+public enum PassengerStatusEnum implements StatusCode {
 
-    private int code;
-    private String message;
+    /**
+     * 乘客验证码发送成功
+     */
+    SUCCESS(200, "发送验证码成功")
+    ;
+    private final int code;
+    private final String message;
 
     private PassengerStatusEnum(int code, String message) {
         this.code = code;

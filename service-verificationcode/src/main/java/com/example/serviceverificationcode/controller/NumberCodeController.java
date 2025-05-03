@@ -23,7 +23,6 @@ public class NumberCodeController {
 
     @GetMapping("/numberCode/{size}")
     public ResponseResult numberCode(@PathVariable("size") int size){
-        System.out.println("size: " + size);
 
         if (size <= 0) {
             throw new IllegalArgumentException("验证码长度必须为正整数");
@@ -37,8 +36,6 @@ public class NumberCodeController {
 
         NumberCodeResponse response = new NumberCodeResponse();
         response.setNumberCode(numberCode.toString());
-
-        System.out.println("验证码为：" + numberCode.toString());
 
         return ResponseResult.success(VerificationcodeStatusEnum.CODE_GENERATED, response);
     }
