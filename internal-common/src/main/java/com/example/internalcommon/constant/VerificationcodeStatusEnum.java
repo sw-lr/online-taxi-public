@@ -15,7 +15,10 @@ public enum VerificationcodeStatusEnum implements StatusCode {
 
     // 成功状态码
     CODE_GENERATED(200, "验证码生成成功"),
-    LOGIN_SUCCESS(200, "登录成功")
+    LOGIN_SUCCESS(200, "登录成功"),
+    // 验证码错误码(9xxx)
+    CODE_MISMATCH(9401, "验证码不匹配"),
+    CODE_NOT_FOUND(9402, "验证码未发送或已失效")
     ;
 
     private int code;
