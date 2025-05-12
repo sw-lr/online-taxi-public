@@ -2,8 +2,10 @@ package com.example.apipassenger.service;
 
 import com.example.apipassenger.remote.ServiceVerificationcodeClient;
 import com.example.internalcommon.constant.PassengerStatusEnum;
+import com.example.internalcommon.constant.VerificationcodeStatusEnum;
 import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.response.NumberCodeResponse;
+import com.example.internalcommon.response.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,23 @@ public class VerificationCodeService {
         // 通过短信服务商，将对应的验证码发送到手机上。阿里短信服务，腾讯短信服务，华信，容联
 
         return ResponseResult.success(PassengerStatusEnum.SUCCESS);
+    }
+
+    public ResponseResult checkCode(String passengerPhone, String verificationCode){
+        // 根据手机号从redis获取验证码
+        System.out.println("根据手机号从redis获取验证码");
+
+        // 校验验证码
+        System.out.println("校验验证码");
+
+        // 判断该用户是否已经注册
+        System.out.println("判断该用户是否已经注册");
+
+        // 颁发令牌
+        System.out.println("颁发令牌");
+
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken("token");
+        return ResponseResult.success(VerificationcodeStatusEnum.LOGIN_SUCCESS, tokenResponse);
     }
 }

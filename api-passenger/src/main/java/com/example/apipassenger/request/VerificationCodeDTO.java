@@ -10,7 +10,12 @@ package com.example.apipassenger.request;
  * @Version 1.0
  */
 public class VerificationCodeDTO {
+
+    // 乘客手机号
     private String passengerPhone;
+
+    // 验证码
+    private String verificationCode;
 
     public String getPassengerPhone() {
         return passengerPhone;
@@ -18,5 +23,13 @@ public class VerificationCodeDTO {
 
     public void setPassengerPhone(String passengerPhone) {
         this.passengerPhone = passengerPhone;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }
