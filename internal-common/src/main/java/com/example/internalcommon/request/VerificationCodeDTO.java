@@ -1,16 +1,15 @@
-package com.example.apipassenger.request;
+package com.example.internalcommon.request;
 
 /**
  * ClassName: VerificationCodeDTO
- * Package: com.example.apipassenger.request
+ * Package: com.example.internalcommon.request
  * Description:
  *
  * @Author 杨思旺
- * @Create 2025/4/25 16:14
+ * @Create 2025/5/12 16:07
  * @Version 1.0
  */
 public class VerificationCodeDTO {
-
     // 乘客手机号
     private String passengerPhone;
 
