@@ -13,4 +13,4 @@
 /.idea/dbnavigator.xml
 
 # 新增忽略规则：api-passenger/target 目录
-api-passenger/target/
+target/
