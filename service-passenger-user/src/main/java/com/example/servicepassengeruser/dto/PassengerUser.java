@@ -25,8 +25,10 @@ public class PassengerUser {
 
     private String passengerName;
 
+    // 性别 0：女 1：男 -1：未知
     private byte passengerGender;
 
+    // 状态 0：有效 1：失效
     private byte state;
 
 }

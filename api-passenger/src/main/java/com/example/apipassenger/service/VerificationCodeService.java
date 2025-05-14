@@ -2,12 +2,14 @@ package com.example.apipassenger.service;
 
 import com.example.apipassenger.remote.ServicePassengerUserClient;
 import com.example.apipassenger.remote.ServiceVerificationcodeClient;
+import com.example.internalcommon.constant.IdentityConstant;
 import com.example.internalcommon.constant.PassengerStatusEnum;
 import com.example.internalcommon.constant.VerificationcodeStatusEnum;
 import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.request.VerificationCodeDTO;
 import com.example.internalcommon.response.NumberCodeResponse;
 import com.example.internalcommon.response.TokenResponse;
+import com.example.internalcommon.util.JwtUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -89,10 +91,10 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        System.out.println("颁发令牌");
+        String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
 
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token");
+        tokenResponse.setToken(token);
         return ResponseResult.success(VerificationcodeStatusEnum.LOGIN_SUCCESS, tokenResponse);
     }
 }
