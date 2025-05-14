@@ -1,9 +1,11 @@
 package com.example.apipassenger.service;
 
+import com.example.apipassenger.remote.ServicePassengerUserClient;
 import com.example.apipassenger.remote.ServiceVerificationcodeClient;
 import com.example.internalcommon.constant.PassengerStatusEnum;
 import com.example.internalcommon.constant.VerificationcodeStatusEnum;
 import com.example.internalcommon.dto.ResponseResult;
+import com.example.internalcommon.request.VerificationCodeDTO;
 import com.example.internalcommon.response.NumberCodeResponse;
 import com.example.internalcommon.response.TokenResponse;
 import org.apache.commons.lang.StringUtils;
@@ -33,6 +35,9 @@ public class VerificationCodeService {
 
     @Autowired
     private ServiceVerificationcodeClient serviceVerificationcodeClient;
+
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
 
     public ResponseResult generatorCode(String passengerPhone){
         // 调用验证码服务，获取验证码
@@ -79,7 +84,9 @@ public class VerificationCodeService {
         }
 
         // 判断该用户是否已经注册
-        System.out.println("判断该用户是否已经注册");
+        VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
         System.out.println("颁发令牌");

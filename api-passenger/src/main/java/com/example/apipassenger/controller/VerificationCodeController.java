@@ -36,6 +36,11 @@ public class VerificationCodeController {
         return verificationCodeService.generatorCode(passengerPhone);
     }
 
+    /**
+     * 校验验证码
+     * @param verificationCodeDTO
+     * @return
+     */
     @PostMapping("/verification-code-check")
     public ResponseResult checkVerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO){
         String passengerPhone = verificationCodeDTO.getPassengerPhone();

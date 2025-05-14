@@ -62,7 +62,7 @@ public class UserService {
             PassengerUser passengerUser = new PassengerUser();
             passengerUser.setPassengerName(generatePassengerName());
             passengerUser.setPassengerPhone(passengerPhone);
-            passengerUser.setPassengerGender((byte) -1);
+            passengerUser.setPassengerGender((byte) 0);
             passengerUser.setState((byte) 0);
 
             LocalDateTime now = LocalDateTime.now();
