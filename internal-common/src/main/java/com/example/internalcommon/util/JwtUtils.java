@@ -35,7 +35,8 @@ public class JwtUtils {
 
     /**
      * 生成token
-     * @param passengerPhone
+     * @param passengerPhone 手机号
+     * @param identity 身份
      * @return
      */
     public static String generatorToken(String passengerPhone, String identity){
@@ -79,13 +80,6 @@ public class JwtUtils {
         TokenResult tokenResult = new TokenResult(phone, identity);
 
         return tokenResult;
-    }
-
-    public static void main(String[] args) {
-        String s = generatorToken("15627582811", IdentityConstant.PASSENGER_IDENTITY);
-        System.out.println(s);
-
-        System.out.println(parseToken(s));
     }
 
 }
