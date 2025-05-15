@@ -1,6 +1,7 @@
 package com.example.apipassenger.controller;
 
 import com.example.apipassenger.service.VerificationCodeService;
+import com.example.internalcommon.constant.CommonStatusEnum;
 import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.request.VerificationCodeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,5 @@ public class VerificationCodeController {
 
         return verificationCodeService.checkCode(passengerPhone, verificationCode);
     }
+
 }

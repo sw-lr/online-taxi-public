@@ -1,5 +1,7 @@
 package com.example.internalcommon.response;
 
+import lombok.Data;
+
 /**
  * ClassName: TokenResponse
  * Package: com.example.internalcommon.response
@@ -9,14 +11,10 @@ package com.example.internalcommon.response;
  * @Create 2025/5/12 10:55
  * @Version 1.0
  */
+@Data
 public class TokenResponse {
-    private String token;
+    private String accessToken;
 
-    public String getToken() {
-        return token;
-    }
+    private String refreshToken;
 
-    public void setToken(String token) {
-        this.token = token;
-    }
 }
