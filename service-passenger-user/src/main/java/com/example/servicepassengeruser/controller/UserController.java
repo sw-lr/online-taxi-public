@@ -4,9 +4,7 @@ import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.request.VerificationCodeDTO;
 import com.example.servicepassengeruser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * ClassName: UserController
@@ -30,4 +28,11 @@ public class UserController {
         System.out.println("手机号：" + passengerPhone);
         return userService.loginOrRegister(passengerPhone);
     }
+
+    @GetMapping("/user/{passengerPhone}")
+    public ResponseResult getUser(@PathVariable("passengerPhone") String passengerPhone){
+
+        return userService.getUser(passengerPhone);
+    }
+
 }

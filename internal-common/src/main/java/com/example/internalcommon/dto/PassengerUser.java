@@ -1,4 +1,4 @@
-package com.example.servicepassengeruser.dto;
+package com.example.internalcommon.dto;
 
 import lombok.Data;
 
@@ -30,5 +30,7 @@ public class PassengerUser {
 
     // 状态 0：有效 1：失效
     private byte state;
+
+    private String profilePhoto;
 
 }

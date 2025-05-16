@@ -15,10 +15,12 @@ public enum UserStatusEnum implements StatusCode {
     // 成功状态码
     USER_CREATED(201, "用户注册成功"),
     LOGIN_SUCCESS(200, "登录成功"),
+    USER_INFO_RETRIEVED(200, "用户信息获取成功"),
 
     // 用户错误码
     USER_REGISTRATION_FAILED(1002, "用户注册失败，请稍后重试"),
-    INVALID_PHONE_FORMAT(1003, "手机号格式不符合规范")
+    INVALID_PHONE_FORMAT(1003, "手机号格式不符合规范"),
+    USER_NOT_FOUND(404, "用户不存在")
     ;
 
     private final int code;
