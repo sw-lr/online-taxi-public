@@ -37,30 +37,13 @@ public class JwtInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         boolean result = true;
-        String resultString = "";
-
-        TokenResult tokenResult = null;
 
         String token = request.getHeader("Authorization");
-        try {
-            tokenResult = JwtUtils.parseToken(token);
-        }catch (SignatureVerificationException e){
-            result = false;
-            resultString = "签名错误";
-        }catch (TokenExpiredException e){
-            result =false;
-            resultString = "token 过期";
-        }catch (AlgorithmMismatchException e){
-            result = false;
-            resultString = "token 解析错误";
-        }catch (Exception e){
-            result = false;
-            resultString = "token 无效";
-        }
+
+        TokenResult tokenResult = JwtUtils.checkToken(token);
 
         if (tokenResult == null){
             result = false;
-            resultString = "token 无效";
         }else{
             String phone = tokenResult.getPhone();
             String identity = tokenResult.getIdentity();
@@ -69,14 +52,8 @@ public class JwtInterceptor implements HandlerInterceptor {
 
             String redisToken = stringRedisTemplate.opsForValue().get(key);
 
-            if (StringUtils.isBlank(redisToken)){
+            if (StringUtils.isBlank(redisToken) || !redisToken.equals(token.trim())){
                 result = false;
-                resultString = "token 无效";
-            }
-
-            if (!redisToken.equals(token.trim())){
-                result = false;
-                resultString = "token 无效";
             }
         }
 
