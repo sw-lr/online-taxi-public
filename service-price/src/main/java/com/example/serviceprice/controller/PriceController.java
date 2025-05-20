@@ -1,9 +1,8 @@
-package com.example.apipassenger.controller;
+package com.example.serviceprice.controller;
 
-import com.example.apipassenger.service.PriceService;
 import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.request.PriceDto;
-import lombok.extern.slf4j.Slf4j;
+import com.example.serviceprice.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,15 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * ClassName: PriceController
- * Package: com.example.apipassenger.controller
+ * Package: com.example.serviceprice.controller
  * Description:
  *
  * @Author 杨思旺
- * @Create 2025/5/20 15:37
+ * @Create 2025/5/20 19:20
  * @Version 1.0
  */
 @RestController
-@Slf4j
 public class PriceController {
 
     @Autowired
@@ -27,6 +25,7 @@ public class PriceController {
 
     @PostMapping("/forecast-price")
     public ResponseResult forecastPrice(@RequestBody PriceDto priceDto){
+
         String depLongitude = priceDto.getDepLongitude();
         String depLatitude = priceDto.getDepLatitude();
         String destLongitude = priceDto.getDestLongitude();
