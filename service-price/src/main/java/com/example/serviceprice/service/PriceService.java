@@ -1,15 +1,21 @@
 package com.example.serviceprice.service;
 
 import com.example.internalcommon.constant.PriceStatusEnum;
+import com.example.internalcommon.dto.PriceRule;
 import com.example.internalcommon.dto.ResponseResult;
 import com.example.internalcommon.request.PriceDto;
 import com.example.internalcommon.response.DirectionResponse;
 import com.example.internalcommon.response.ForecastPriceResponse;
+import com.example.serviceprice.mapper.PriceRuleMapper;
 import com.example.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName: PriceService
@@ -26,6 +32,9 @@ public class PriceService {
 
     @Autowired
     private ServiceMapClient serviceMapClient;
+
+    @Autowired
+    private PriceRuleMapper priceRuleMapper;
 
     public ResponseResult forecastPrice(@RequestBody PriceDto priceDto){
 
@@ -46,6 +55,10 @@ public class PriceService {
         Integer duration = driving.getData().getDuration();
 
         log.info("读取计价规则");
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("city_code", "11000");
+        queryMap.put("vehicle_type", "1");
+        List<PriceRule> priceRules = priceRuleMapper.selectByMap(queryMap);
 
         log.info("根据距离、时长、计价规则，计算价格");
 
