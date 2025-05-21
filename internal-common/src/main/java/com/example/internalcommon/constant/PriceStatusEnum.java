@@ -16,7 +16,12 @@ public enum PriceStatusEnum implements StatusCode {
     /**
      * 预估价格计算成功
      */
-    PRICE_CALCULATED(200, "预估价格已生成")
+    PRICE_CALCULATED(200, "预估价格已生成"),
+
+    /**
+     * 计价规则不存在
+     */
+    RULE_NOT_FOUND(9403, "未匹配到计价规则（城市码：{0}，车型：{1}）")
     ;
 
     private final int code;
