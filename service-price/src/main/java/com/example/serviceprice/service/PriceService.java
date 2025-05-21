@@ -121,7 +121,7 @@ public class PriceService {
         Double unitPricePerMinute = priceRule.getUnitPricePerMinute();
         BigDecimal unitPricePerMinuteDecimal = new BigDecimal(unitPricePerMinute);
         BigDecimal durationFare = durationMinutesDecimal.multiply(unitPricePerMinuteDecimal);
-        price = price.add(durationFare);
+        price = price.add(durationFare).setScale(2, BigDecimal.ROUND_HALF_UP);
 
         return price.doubleValue();
     }
